@@ -1,4 +1,4 @@
 # Tutorial APAP
 
 ## Authors
-* **<Nama Lengkap di SIAK-NG>** - *<NPM>* - *<Kelas>*
+* *Adimas Putra Pratama Hendrata* - 1906305575 - C
