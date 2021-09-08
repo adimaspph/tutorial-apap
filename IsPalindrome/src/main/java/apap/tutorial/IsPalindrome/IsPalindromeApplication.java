@@ -1,4 +1,4 @@
-package apap.tutorial.IsPalindrome;
+package apap.tutorial.isPalindrome;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
