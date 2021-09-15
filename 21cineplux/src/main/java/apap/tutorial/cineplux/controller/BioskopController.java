@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.List;
 
 @Controller
@@ -114,7 +113,7 @@ public class BioskopController {
     }
 
     @RequestMapping(value="/bioskop/delete/id-bioskop/{idBioskop}")
-    public String deletebioskop(
+    public String deleteBioskop(
             @PathVariable(value = "idBioskop") String idBioskop,
             Model model
     ){
@@ -134,7 +133,6 @@ public class BioskopController {
         }
         //Add message untuk dirender dalam thymeleaf
         model.addAttribute("messageError", "Bioskop dengan id " + idBioskop + " tidak ditemukan, DELETE GAGAL");
-
         return "error-bioskop";
     }
 }
