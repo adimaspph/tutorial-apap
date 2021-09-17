@@ -5,7 +5,35 @@
 * Adimas Putra Pratama Hendrata - 1906305575 - C
 
 ---
-## Tutorial 1
+
+## PERTANYAAN TUTORIAL 2
+
+### Pertanyaan 1
+Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut: http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx&jumlahStudio=10 Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi
+- Terjadi error karena belum pada controller saya telah menyantumkan "view" pada *Controller* namun belum membuatnya pada *Templates*.
+
+### Pertanyaan 2
+Menurut kamu anotasi @Autowired pada class Controller tersebut merupakan implementasi dari konsep apa? Dan jelaskan secara singkat cara kerja @Autowired tersebut dalam konteks service dan controller yang telah kamu buat
+- Spring Framework menyediakan fitur component-scan, yaitu dia akan melihat isi package yang kita sebutkan, kemudian akan mencari class-class yang diberi anotasi berikut: @Repository, @Service, @Controller, @Component
+- @Autowired digunakan untuk melakukan inject instance dari suatu bean ke objek yang memiliki dependency.
+
+### Pertanyaan 3
+Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut: http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.
+- Terjadi error karena tidak terdapat jumlah studio pada link diatas.
+
+### Pertanyaan 4
+Jika Papa APAP ingin melihat Bioskop dengan nama Bioskop Maung, link apa yang harus diakses?
+- Pertama saya asumsikan Bioskop dengan nama Bioskop Maung telah berada pada data base. Kita bisa melihat nomor ID dengan mengakses  http://localhost:8080/bioskop/viewall.
+- Asumsikan Bioskop Maung memiliki ID 1, maka untuk melihat kita dapat mengakses http://localhost:8080/bioskop/view?idBioskop=1
+
+### Pertanyaan 5
+Tambahkan 1 contoh Bioskop lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/bioskop/viewall , apa yang akan ditampilkan? Sertakan juga bukti screenshotmu.
+- Karena saya telah membuat method pada controller untuk menghandle URL tersebut, maka browser akam menampilkan semua list bioskop yang ada pada data base.
+- Berikut screenshotnya https://cdn.discordapp.com/attachments/751758743418437706/887651841666580500/unknown.png
+
+----
+
+## Pertanyaan Tutorial 1
 ### What I have learned today
 Springboot adalah framework dari java yang memiliki cara kerja MVC (model, view, controller) dimana model sebagai otak dari aplikasi dan view adalah tempat untuk mengatur tampilan dari aplikasi, sedangkan controller sebagai jembatan yang menjembatani model dengan view. 
 
@@ -47,4 +75,6 @@ sudah mengerti dikemudian hari, dan tambahkan tulisan yang membuat Anda mengerti
 - [ ] Kenapa saya harus belajar APAP?
 - [ ] Cara membuat aplikasi berbasis website dengan springboot
 - [ ] Membuat atau memakai API
+
+----
 

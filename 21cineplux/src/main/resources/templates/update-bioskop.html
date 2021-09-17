@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Bioskop</title>
+</head>
+<body>
+    <h2 th:text="'Jumlah studio pada Id Bioskop ' + ${bioskop.idBioskop} + ' telah diubah menjadi ' + ${bioskop.jumlahStudio}"></h2>
+    <a href="/bioskop/viewall">Kembali</a>
+</body>
+</html>
