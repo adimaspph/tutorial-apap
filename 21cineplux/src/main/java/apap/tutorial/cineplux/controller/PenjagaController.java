@@ -54,6 +54,11 @@ public class PenjagaController {
         LocalTime curWaktu = LocalTime.now();
         PenjagaModel penjaga = penjagaService.getPenjagaByNoPenjaga(noPenjaga);
 
+        if (penjaga == null) {
+            model.addAttribute( "pesan", "Penjaga dengan id " + noPenjaga + " tidak ditemukan. GAGAL UPDATE PENJAGA");
+            return "message-error";
+        }
+
         LocalTime waktuBuka = penjaga.getBioskop().getWaktuBuka();
         LocalTime waktuTutup = penjaga.getBioskop().getWaktuTutup();
 
@@ -76,6 +81,7 @@ public class PenjagaController {
         return "message";
     }
 
+
     @GetMapping("/penjaga/delete/{noPenjaga}")
     public String deletePenjaga(
             @PathVariable Long noPenjaga,
@@ -83,6 +89,11 @@ public class PenjagaController {
     ){
         LocalTime curWaktu = LocalTime.now();
         PenjagaModel penjaga = penjagaService.getPenjagaByNoPenjaga(noPenjaga);
+        if (penjaga == null) {
+            model.addAttribute( "pesan", "Penjaga dengan id " + noPenjaga + " tidak ditemukan. GAGAL UPDATE PENJAGA");
+            return "message-error";
+        }
+
         LocalTime waktuBuka = penjaga.getBioskop().getWaktuBuka();
         LocalTime waktuTutup = penjaga.getBioskop().getWaktuTutup();
 

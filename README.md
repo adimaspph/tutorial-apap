@@ -7,6 +7,42 @@
 ---
 
 ## PERTANYAAN TUTORIAL 2
+### Pertanyaan 1
+Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model
+(@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)
+- @Getter @Setter digunakan agar kita tidak perlu membuat getter dan setter lagi untuk class yang kita buat. Hal ini akan memudahkan developer untuk membaca code yang penting saja.
+- @NoArgsConstructor akan menghasilkan konstruktor tanpa parameter.
+- @AllArgsConstructor menghasilkan konstruktor dengan 1 parameter untuk setiap field di class. Field yang ditandai dengan @NonNull menghasilkan pemeriksaan nol pada parameter tersebut.
+- @Entity untuk mendefinisikan bahwa class tersebut adalah entity pada databases.
+- @Table: Secara default, entitas yang kita definisikan akan dipetakan ke tabel dnegan nama yang telah ditentukan. Jika ingin menamai table dengan yang kita inginkan, maka kita harus menambahkan @Table
+
+### Pertanyaan 2
+Pada class BioskopDB, terdapat method findByNoBioskop, apakah kegunaan dari method tersebut?
+- 
+
+### Pertanyaan 3
+Jelaskan perbedaan kegunaan dari anotasi @JoinTable dan @JoinColumn
+- @JoinTable menyimpan id dari kedua tabel ke dalam tabel terpisah.
+- @JoinColumn menyimpan id dari tabel lain di kolom baru.
+
+### Pertanyaan 4
+Pada class PenjagaModel, digunakan anotasi @JoinColumn pada atribut bioskop, apa kegunaan dari name, referencedColumnName, dan nullable dalam anotasi tersebut? dan apa perbedaan nullable dan penggunaan anotasi @NotNull
+- name: untuk mendefinisikan nama kolom (foreignKey).
+- referencedColumnName: mendefinisikan dari colom mana yang akan dijoin.
+- nullable: untuk mendefinisikan boleh null apa tidak pada hasil joinnya.
+- @NotNull: Agar kolom tidak boleh null.
+
+### Pertanyaan 5
+Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER
+- FetchType.LAZY : pola desain yang digunakan untuk menunda inisialisasi objek selama mungkin. Jika kita mengambil objek, maka tidak akan diinisialisasi dan dimuat ke dalam memori hingga panggilan eksplisit dibuat untuk itu.
+- FetchType.EAGER : pola desain di mana inisialisasi data terjadi secara on spot. Jika kita membuat sebuah objek, maka semua data yang berhubungan dengan objek tersebut akan tersimpan di memory.
+- EAGER lebih cepat namun boros memori, sedangkan LAZY lambat namun hemat memori
+
+
+---
+
+
+## PERTANYAAN TUTORIAL 2
 
 ### Pertanyaan 1
 Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut: http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx&jumlahStudio=10 Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi

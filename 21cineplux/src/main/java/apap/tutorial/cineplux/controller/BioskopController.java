@@ -3,7 +3,6 @@ package apap.tutorial.cineplux.controller;
 import apap.tutorial.cineplux.model.BioskopModel;
 import apap.tutorial.cineplux.model.PenjagaModel;
 import apap.tutorial.cineplux.service.BioskopService;
-import apap.tutorial.cineplux.service.PenjagaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -64,6 +63,11 @@ public class BioskopController {
             Model model
     ){
         BioskopModel bioskop = bioskopService.getBioskopByNoBioskop(noBioskop);
+        if (bioskop == null) {
+            model.addAttribute( "pesan", "Bioskop dengan id " + noBioskop + " tidak ditemukan. GAGAL UPDATE BIOSKOP");
+            return "message-error";
+        }
+
         model.addAttribute( "bioskop",bioskop);
         return"form-update-bioskop" ;
     }
@@ -85,6 +89,12 @@ public class BioskopController {
     ){
         LocalTime curWaktu = LocalTime.now();
         BioskopModel bioskop = bioskopService.getBioskopByNoBioskop(noBioskop);
+
+        if (bioskop == null) {
+            model.addAttribute( "pesan", "Bioskop dengan id " + noBioskop + " tidak ditemukan. GAGAL UPDATE BIOSKOP");
+            return "message-error";
+        }
+
         List<PenjagaModel> listPenjaga = bioskop.getListPenjaga();
         LocalTime waktuBuka = bioskop.getWaktuBuka();
         LocalTime waktuTutup = bioskop.getWaktuTutup();
