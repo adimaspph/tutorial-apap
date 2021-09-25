@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalTime;
+import java.util.List;
 
 @Controller
 public class PenjagaController {
@@ -54,6 +55,7 @@ public class PenjagaController {
         LocalTime curWaktu = LocalTime.now();
         PenjagaModel penjaga = penjagaService.getPenjagaByNoPenjaga(noPenjaga);
 
+
         if (penjaga == null) {
             model.addAttribute( "pesan", "Penjaga dengan id " + noPenjaga + " tidak ditemukan. GAGAL UPDATE PENJAGA");
             return "message-error";
@@ -76,6 +78,15 @@ public class PenjagaController {
             @ModelAttribute PenjagaModel penjaga,
             Model model
     ){
+        BioskopModel bioskop = penjaga.getBioskop();
+        List<PenjagaModel> listPenjaga = bioskop.getListPenjaga();
+
+        for (PenjagaModel semuaPenjaga : listPenjaga) {
+            if (semuaPenjaga.getNamaPenjaga().equals(semuaPenjaga.getNamaPenjaga())) {
+                model.addAttribute( "pesan", "Gagal update karena nama sudah ada");
+                return "message-error";
+            }
+        }
         penjagaService.updatePenjaga(penjaga);
         model.addAttribute( "pesan", "Penjaga dengan id " + penjaga.getNoPenjaga() + " berhasil diupdate");
         return "message";
