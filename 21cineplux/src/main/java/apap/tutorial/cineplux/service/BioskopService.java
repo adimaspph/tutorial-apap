@@ -7,9 +7,9 @@ public interface BioskopService {
     //Method untuk menambah bioskop
     void addBioskop(BioskopModel bioskop);
 
-    //Method untuk mendapatkan daftar Bioskop yang tersimpan
+    void updateBioskop(BioskopModel bioskop);
     List<BioskopModel> getBioskopList();
+    BioskopModel getBioskopByNoBioskop(Long noBioskop);
 
-    //Method untuk mendapatkan data sebuah bioskop berdasarkan id bioskop
-    BioskopModel getBioskopByIdBioskop(String idBioskop);
+    public void deleteBioskop(Long noBioskop);
 }
