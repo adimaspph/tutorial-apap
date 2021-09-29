@@ -2,15 +2,17 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Error Bioskop</title>
+    <title>401 Unauthorized</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 
-
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
-    <h1 th:text="${messageError}" style="color: red"></h1>
-    <a href="/bioskop/viewall">Kembali</a>
+<div class="align-content-center jumbotron container-fluid">
+    <h2>Error: 401 Unauthorized</h2>
+    <a class="btn btn-primary" th:href="@{/}">Kembali ke Home</a>
+</div>
+
 </body>
 </html>
