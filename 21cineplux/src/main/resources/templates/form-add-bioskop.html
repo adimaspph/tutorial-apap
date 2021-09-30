@@ -18,23 +18,23 @@
                 <br>
                 <form th:action="@{/bioskop/add/}" th:object="${bioskop}" method="POST">
                     Nama Bioskop : <br>
-                    <input required class="form-control" type="text" name="namaBioskop" th:value="${bioskop.namaBioskop}"/>
+                    <input required class="form-control" type="text" name="namaBioskop" th:value="*{namaBioskop}"/>
                     <br><br>
 
                     Alamat Bioskop: <br>
-                    <input required class="form-control" type="text" name="alamatBioskop" th:value="${bioskop.alamatBioskop}"/>
+                    <input required class="form-control" type="text" name="alamatBioskop" th:value="*{alamatBioskop}"/>
                     <br><br>
 
                     Jumlah Studio : <br>
-                    <input required min="0" class="form-control" type="number" name="jumlahStudio" th:value="${bioskop.jumlahStudio}" />
+                    <input required min="0" class="form-control" type="number" name="jumlahStudio" th:value="*{jumlahStudio}" />
                     <br><br>
 
                     Waktu Buka : <br>
-                    <input required class="form-control" type="time" name="waktuBuka" th:value="${bioskop.waktuBuka}" />
+                    <input required class="form-control" type="time" name="waktuBuka" th:value="*{waktuBuka}" />
                     <br><br>
 
                     Waktu Tutup : <br>
-                    <input required class="form-control" type="time" name="waktuTutup" th:value="${bioskop.waktuTutup}" />
+                    <input required class="form-control" type="time" name="waktuTutup" th:value="*{waktuTutup}" />
                     <br><br>
 
                     <table class="table">

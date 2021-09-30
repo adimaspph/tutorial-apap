@@ -6,7 +6,28 @@
 
 ---
 
-## PERTANYAAN TUTORIAL 2
+## PERTANYAAN TUTORIAL 4
+
+### Pertanyaan 1
+Jelaskan perbedaan th:include dan th:replace!
+- th:replace -> Akan menggantikan tag host dengan fragmen. Itu berarti, Ini akan menghapus tag host dan sebagai ganti tag host, yang berarti akan menambahkan fragmen yang ditentukan termasuk tag fragmen
+- th:include -> Akan menyisipkan fragmen yang ditentukan sebagai badan tag hostnya tetapi mengecualikan tag fragmen
+
+### Pertanyaan 2
+Jelaskan apa fungsi dari th:object!
+- th:object digunakan untuk menentukan objek yang akan diikat oleh data formulir yang dikirimkan. Masing-masing bidang dipetakan menggunakan atribut th:field="*{name}", di mana nama adalah properti objek yang cocok
+
+### Pertanyaan 3
+Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai?
+- $ digunakan untuk mengambil atribut yang dipassing kedalam templat. Dengan dolar kita harus mendefinisikan objectnya terlebih dahulu untuk mengakses attributnya
+- \* digunakan untuk mengambil atribut didalam object yang telah didefinisikan sebelumnya pada th:object
+- Jika kita ingin mengakses atribut pada th:object, disarankan menggunakan * agar tidak perlu menyebutkan ulang objectnya sehingga memangkas program
+- Jika artibut yang ingin kita akses tidak ada dalam th:object gunakanlah $ agar dapat mengakses object tersebut
+
+---
+
+## PERTANYAAN TUTORIAL 3
+
 ### Pertanyaan 1
 Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model
 (@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)
