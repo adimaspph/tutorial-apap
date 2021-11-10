@@ -81,30 +81,49 @@ public class PenjagaController {
         return "message";
     }
 
-
-    @GetMapping("/penjaga/delete/{noPenjaga}")
-    public String deletePenjaga(
-            @PathVariable Long noPenjaga,
+    @PostMapping("/penjaga/delete")
+    public String deletePenjagaSubmit(
+            @ModelAttribute BioskopModel bioskop,
             Model model
     ){
-        LocalTime curWaktu = LocalTime.now();
-        PenjagaModel penjaga = penjagaService.getPenjagaByNoPenjaga(noPenjaga);
-        if (penjaga == null) {
-            model.addAttribute( "pesan", "Penjaga dengan id " + noPenjaga + " tidak ditemukan. GAGAL UPDATE PENJAGA");
-            return "message-error";
+        model.addAttribute("noBioskop", bioskop.getNoBioskop());
+//        System.out.println(bioskop.getNoBioskop());
+//        System.out.println(bioskop);
+        for (PenjagaModel penjaga : bioskop.getListPenjaga()) {
+//            penjagaService.deletePenjaga(penjaga);
+            if (penjagaService.deletePenjaga(penjaga) == 0) {
+                model.addAttribute( "pesan", "Bioskop dengan id " + bioskop.getNoBioskop() + " masih buka. GAGAL DELETE PENJAGA");
+                return "message-error";
+            }
         }
 
-        LocalTime waktuBuka = penjaga.getBioskop().getWaktuBuka();
-        LocalTime waktuTutup = penjaga.getBioskop().getWaktuTutup();
-
-        if (curWaktu.isAfter(waktuBuka) && curWaktu.isBefore(waktuTutup)){
-            model.addAttribute( "pesan", "Bioskop dengan id " + penjaga.getBioskop().getNoBioskop() + " masih buka. GAGAL DELETE PENJAGA");
-            return "message-error";
-        }
-
-        penjagaService.deletePenjaga(noPenjaga);
-
-        model.addAttribute( "pesan", "Penjaga dengan id " + noPenjaga + " berhasil didelete");
-        return "message";
+        model.addAttribute( "pesan", "Penjaga berhasil didelete");
+        return "delete-penjaga";
     }
+
+//    @GetMapping("/penjaga/delete/{noPenjaga}")
+//    public String deletePenjaga(
+//            @PathVariable Long noPenjaga,
+//            Model model
+//    ){
+//        LocalTime curWaktu = LocalTime.now();
+//        PenjagaModel penjaga = penjagaService.getPenjagaByNoPenjaga(noPenjaga);
+//        if (penjaga == null) {
+//            model.addAttribute( "pesan", "Penjaga dengan id " + noPenjaga + " tidak ditemukan. GAGAL UPDATE PENJAGA");
+//            return "message-error";
+//        }
+//
+//        LocalTime waktuBuka = penjaga.getBioskop().getWaktuBuka();
+//        LocalTime waktuTutup = penjaga.getBioskop().getWaktuTutup();
+//
+//        if (curWaktu.isAfter(waktuBuka) && curWaktu.isBefore(waktuTutup)){
+//            model.addAttribute( "pesan", "Bioskop dengan id " + penjaga.getBioskop().getNoBioskop() + " masih buka. GAGAL DELETE PENJAGA");
+//            return "message-error";
+//        }
+//
+//        penjagaService.deletePenjaga(noPenjaga);
+//
+//        model.addAttribute( "pesan", "Penjaga dengan id " + noPenjaga + " berhasil didelete");
+//        return "message";
+//    }
 }

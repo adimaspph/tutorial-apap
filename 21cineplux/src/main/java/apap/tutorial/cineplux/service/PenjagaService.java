@@ -10,4 +10,6 @@ public interface PenjagaService {
     public void updatePenjaga(PenjagaModel penjaga);
 
     public void deletePenjaga(Long noPenjaga);
+
+    public int deletePenjaga(PenjagaModel penjaga);
 }
