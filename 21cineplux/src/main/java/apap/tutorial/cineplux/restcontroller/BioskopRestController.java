@@ -62,7 +62,7 @@ public class BioskopRestController {
         }
     }
 
-    @PostMapping(value = "/bioskop/{noBioskop}")
+    @PutMapping(value = "/bioskop/{noBioskop}")
     private BioskopModel updateBioskop(
             @PathVariable("noBioskop") Long noBioskop,
             @RequestBody BioskopModel bioskop)

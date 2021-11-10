@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -60,7 +61,7 @@ public class PenjagaRestController {
         }
     }
 
-    @PostMapping(value = "/penjaga/{noPenjaga}")
+    @PutMapping(value = "/penjaga/{noPenjaga}")
     private PenjagaModel updatePenjaga(
             @PathVariable("noPenjaga") Long noPenjaga,
             @RequestBody PenjagaModel penjaga)
@@ -77,5 +78,10 @@ public class PenjagaRestController {
     @GetMapping(value = "/list-penjaga")
     private List<PenjagaModel> retrieveListPenjaga(){
         return penjagaRestService.retrieveListPenjaga();
+    }
+
+    @GetMapping(value = "/penjaga/umur/{noPenjaga}")
+    private PenjagaModel predictUmur(@PathVariable("noPenjaga") Long noPenjaga){
+        return penjagaRestService.predictUmur(noPenjaga);
     }
 }

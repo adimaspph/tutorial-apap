@@ -4,14 +4,15 @@ import apap.tutorial.cineplux.model.BioskopModel;
 import apap.tutorial.cineplux.model.PenjagaModel;
 import apap.tutorial.cineplux.repository.BioskopDB;
 import apap.tutorial.cineplux.repository.PenjagaDB;
+import apap.tutorial.cineplux.rest.Setting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import javax.transaction.Transactional;
 import java.time.LocalTime;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -64,5 +65,25 @@ public class PenjagaRestServiceImpl implements PenjagaRestService{
         } else {
             throw new UnsupportedOperationException("Bioskop still open!");
         }
+    }
+
+    private final WebClient webClient;
+
+    public PenjagaRestServiceImpl(WebClient.Builder webClientBuilder) {
+        this.webClient = webClientBuilder.baseUrl(Setting.penjagaUrl).build();
+    }
+    @Override
+    public PenjagaModel predictUmur(Long noPenjaga) {
+        PenjagaModel penjaga = getPenjagaByNoPenjaga(noPenjaga);
+
+        String[] splitedName = penjaga.getNamaPenjaga().split(" ");
+
+        Mono<Map> umur = this.webClient.get().uri("/?name=" + splitedName[0])
+                .retrieve()
+                .bodyToMono(Map.class);
+
+        Map<String, Integer> umurMap = umur.block();
+        penjaga.setUmur(umurMap.get("age"));
+        return penjaga;
     }
 }

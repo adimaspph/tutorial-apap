@@ -35,6 +35,10 @@ public class PenjagaModel implements Serializable{
     @Column(nullable = false)
     private Integer jenisKelamin;
 
+    @Column(nullable = true)
+    private Integer umur;
+
+
     //Relasi dengan BioskopModel
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "no_bioskop", referencedColumnName = "noBioskop", nullable = false)
