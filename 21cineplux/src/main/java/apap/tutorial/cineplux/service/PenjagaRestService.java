@@ -9,6 +9,7 @@ import java.util.List;
 public interface PenjagaRestService {
     PenjagaModel createPenjaga(PenjagaModel penjaga);
     List<PenjagaModel> retrieveListPenjaga();
+    List<PenjagaModel> retrieveListPenjagaKelamin(Integer kelamin);
     PenjagaModel getPenjagaByNoPenjaga(long noPenjaga);
     PenjagaModel updatePenjaga(Long noPenjaga, PenjagaModel penjagaUpdate);
     void deletePenjaga(Long noPenjaga);

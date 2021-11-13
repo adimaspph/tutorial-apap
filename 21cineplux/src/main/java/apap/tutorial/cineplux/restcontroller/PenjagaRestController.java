@@ -68,6 +68,7 @@ public class PenjagaRestController {
     {
         try {
             return penjagaRestService.updatePenjaga(noPenjaga, penjaga);
+//            return ResponseEntity.ok("Penjaga with No Penjaga " + String.valueOf(noPenjaga) + " has been Updated!");
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "Penjaga with No Penjaga " + String.valueOf(noPenjaga) + " Not Found."
@@ -80,8 +81,21 @@ public class PenjagaRestController {
         return penjagaRestService.retrieveListPenjaga();
     }
 
+    @GetMapping(value = "/list-penjaga/{kelamin}")
+    private List<PenjagaModel> retrieveListPenjagaKelamin(
+            @PathVariable("kelamin") Integer kelamin
+    ){
+        return penjagaRestService.retrieveListPenjagaKelamin(kelamin);
+    }
+
     @GetMapping(value = "/penjaga/umur/{noPenjaga}")
     private PenjagaModel predictUmur(@PathVariable("noPenjaga") Long noPenjaga){
-        return penjagaRestService.predictUmur(noPenjaga);
+        try {
+            return penjagaRestService.predictUmur(noPenjaga);
+        } catch (NoSuchElementException e) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "No Penjaga " + String.valueOf(noPenjaga) + " Not Found."
+            );
+        }
     }
 }

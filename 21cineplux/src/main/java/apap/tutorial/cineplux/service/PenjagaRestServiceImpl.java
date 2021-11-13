@@ -34,6 +34,20 @@ public class PenjagaRestServiceImpl implements PenjagaRestService{
     }
 
     @Override
+    public List<PenjagaModel> retrieveListPenjagaKelamin(Integer kelamin) {
+        return  penjagaDB.findAllByJenisKelamin(kelamin);
+
+//        List<PenjagaModel> result = new LinkedList<>();
+//
+//        for (PenjagaModel penjaga : listPenjaga) {
+//             if (penjaga.getJenisKelamin() == kelamin) {
+//                 result.add(penjaga);
+//             }
+//        }
+//        return result;
+    }
+
+    @Override
     public PenjagaModel getPenjagaByNoPenjaga(long noPenjaga) {
         Optional<PenjagaModel> penjaga = penjagaDB.findById(noPenjaga);
         if (penjaga.isPresent()) {

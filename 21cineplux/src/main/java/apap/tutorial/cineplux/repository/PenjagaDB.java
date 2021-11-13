@@ -1,9 +1,14 @@
 package apap.tutorial.cineplux.repository;
 
+import apap.tutorial.cineplux.model.BioskopModel;
 import apap.tutorial.cineplux.model.PenjagaModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface PenjagaDB extends JpaRepository<PenjagaModel, Long>{
+    List<PenjagaModel> findAllByJenisKelamin(Integer jenisKelamin);
 }
