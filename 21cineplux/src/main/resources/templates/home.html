@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta charset="UTF-8">
@@ -25,8 +25,12 @@
             <a th:href="@{/film/viewall/}" class="mx-2 btn btn-warning">Lihat semua film</a>
             <a th:href="@{/film/add/}" class="mx-2 btn btn-outline-warning">Tambah film</a>
         </div>
+        <div th:if="${isAdmin}" class="my-3 d-flex justify-content-center">
+            <a th:href="@{/user/viewall/}" class="mx-2 btn btn-warning">Lihat semua user</a>
+            <a th:href="@{/user/add}" class="mx-2 btn btn-outline-warning">Tambah User Baru</a>
+        </div>
         <div class="my-3 d-flex justify-content-center">
-            <a th:href="@{/user/add/}" class="mx-2 btn btn-outline-warning">Tambah User Baru</a>
+            <a th:href="@{/user/update-password}" class="mx-2 btn btn-warning">Ubah Password</a>
         </div>
     </div>
 </div>

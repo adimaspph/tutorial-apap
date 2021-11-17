@@ -23,12 +23,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
+                .antMatchers("/user/add/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/user/viewall/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/penjaga/add/**").hasAnyAuthority("MANAGER")
+                .antMatchers("/penjaga/update/**").hasAnyAuthority("MANAGER")
+                .antMatchers("/penjaga/delete/**").hasAnyAuthority("MANAGER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll();
+
     }
 
     @Bean

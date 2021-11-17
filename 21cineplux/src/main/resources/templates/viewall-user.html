@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>All User</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div class="container">
+    <br>
+    <h2>Daftar Seluruh Bioskop</h2>
+    <br>
+    <table class="table table-bordered">
+        <thead class="table-info">
+        <tr>
+            <th>No</th>
+            <th>Username</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user, iterationStatus : ${listUser}"
+            th:style="${iterationStatus.even} ? 'font-weigth:bold;'">
+            <td th:text="${iterationStatus.count}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.nama}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.role.role}"></td>
+            <td>
+                <a class="btn btn-danger" th:href="@{/user/viewall/delete/} + ${user.id}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="/">Home</a>
+</div>
+
+</body>
+
+</html>

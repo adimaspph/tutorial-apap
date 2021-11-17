@@ -10,6 +10,7 @@
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
 <div class="container">
+    <br>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
@@ -33,6 +34,12 @@
                             <option selected value="">-- Pilih Role --</option>
                             <option th:each="role : ${listRole}" th:value="${role.id}" th:text="${role.role}"></option>
                         </select>
+
+                        <br>
+                        <div th:if="${error}">
+                            <span style="color: red" th:text="${error}"></span>
+                            <br>
+                        </div>
                         <br>
                         <button type="submit" class="btn btn-warning">Simpan</button>
                         <a class="btn btn-link" href="/">Home</a>
