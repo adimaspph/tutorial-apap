@@ -6,6 +6,28 @@
 
 ---
 
+## PERTANYAAN TUTORIAL 5
+
+### Pertanyaan 1
+Apa itu Postman? Apa kegunaannya?
+- Postman adalah aplikasi yang digunakan untuk pengujian API. Ini adalah klien HTTP yang menguji permintaan HTTP, menggunakan antarmuka pengguna grafis, yang melaluinya kami memperoleh berbagai jenis respons yang perlu divalidasi selanjutnya.
+
+### Pertanyaan 2
+Jelaskan fungsi dari anotasi @JsonIgnoreProperties dan @JsonProperty.
+- @JsonProperty untuk menunjukkan nama properti di JSON.
+- @JsonIgnoreProperties mengabaikan properti logis yang ditentukan dalam serialisasi dan deserialisasi JSON. Hal ini dijelaskan di tingkat kelas. Temukan cuplikan kode.
+
+### Pertanyaan 3
+Apa kegunaan atribut WebClient?
+- WebClient adalah antarmuka yang mewakili titik masuk utama untuk melakukan permintaan web. Webclient digunakan untuk mendapatkan hasil API dari url yang telah didefinisikan.
+
+### Pertanyaan 4
+Apa itu ResponseEntity dan BindingResult? Apa kegunaannya?
+- BindingResult adalah antarmuka yang menentukan bagaimana objek yang menyimpan hasil validasi harus menyimpan dan mengambil hasil validasi (kesalahan, upaya untuk mengikat ke bidang yang tidak diizinkan, dll)
+- ResponseEntity mewakili respons HTTP, termasuk header, isi, dan status. Sementara @ResponseBody menempatkan nilai kembalian ke dalam isi respons, ResponseEntity juga memungkinkan kita untuk menambahkan header dan kode status.
+
+---
+
 ## PERTANYAAN TUTORIAL 4
 
 ### Pertanyaan 1
