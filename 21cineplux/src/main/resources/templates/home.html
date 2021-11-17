@@ -14,6 +14,8 @@
 
 <div class="d-flex justify-content-center">
     <div class="m-4">
+
+        <h2 style="text-align: center" th:text="'Hello ' + ${#httpServletRequest.remoteUser} + ' !'">Login as</h2>
         <h2>Selamat Datang di 21Cineplux</h2>
         <div class="d-flex justify-content-center">
             <a th:href="@{/bioskop/viewall/}" class="mx-2 btn btn-warning">Lihat semua bioskop</a>
@@ -23,20 +25,11 @@
             <a th:href="@{/film/viewall/}" class="mx-2 btn btn-warning">Lihat semua film</a>
             <a th:href="@{/film/add/}" class="mx-2 btn btn-outline-warning">Tambah film</a>
         </div>
+        <div class="my-3 d-flex justify-content-center">
+            <a th:href="@{/user/add/}" class="mx-2 btn btn-outline-warning">Tambah User Baru</a>
+        </div>
     </div>
 </div>
-<!--<div class="container">-->
-<!--    <div class="card m-4 p-4">-->
-<!--        <div class="card-body">-->
-<!--            <div class="justify-content-center">-->
-<!--                <h2>Welcome to 21 Cineplux!</h2>-->
-<!--                <br>-->
-<!--                <a class="btn btn-primary" href="/bioskop/add">Tambah Bioskop</a>-->
-<!--                <a class="btn btn-primary" href="/bioskop/viewall">Lihat Semua Bioskop</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
 </body>
 
