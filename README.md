@@ -5,7 +5,7 @@
 * Adimas Putra Pratama Hendrata - 1906305575 - C
 
 ---
-## PERTANYAAN TUTORIAL 5
+## PERTANYAAN TUTORIAL 7
 
 ### Pertanyaan 1
 Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.
@@ -54,6 +54,36 @@ Apa perbedaan class component dan functional component?
 Dalam react, apakah perbedaan component dan element?
 - React Element adalah objek sederhana yang menggambarkan simpul DOM dan atribut atau propertinya yang dapat Anda katakan. Ini adalah objek deskripsi yang tidak dapat diubah dan Anda tidak dapat menerapkan metode apa pun di atasnya.
 - React Component adalah fungsi atau kelas yang menerima input dan mengembalikan elemen React. Itu harus menyimpan referensi ke node DOM dan ke instance komponen anak.
+
+----
+
+## PERTANYAAN TUTORIAL 6
+
+### Pertanyaan 1
+Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kodeyang telah anda buat) konsep tersebut diimplementasi?
+- Otorisasi adalah proses menentukan apakah pengguna saat ini diperbolehkan untuk melakukan tugas tertentu atau tidak. Contoh dalam implementasi adalah bagaimana hanya seorang admin yang dapat melihat dan menambah user, serta manager yang dapat mengatur penjaga bioskop.
+- Hal tersebut berada pada bagian .antMatchers("/user/viewall/**").hasAnyAuthority("ADMIN") dan .antMatchers("/penjaga/add/**").hasAnyAuthority("MANAGER")
+- Otentikasi adalah proses identifikasi pengguna. Ada beberapa aplikasi web memberikan kombinasi nama user/password atau email, melalui pihak ketiga, seperti lewat akun Twitter atau Facebook. Pengguna yang tampa melalui otentikasi disebut anonymous, atau guest/tamu. Terkait dengan otentikasi otorisasi. Contoh dalam implementasi adalah pengguna dapat login dalam dengan memasukan username dan password.
+- Hal tersebut berada pada bagian auth.userDetailsService(userDetailsService).passwordEncoder(encoder())
+
+### Pertanyaan 2
+Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.
+- BCryptPasswordEncoder berguna untuk mengenkripsi sehingga password tidak diketahui walaupun sudah dilihat di databse. BCryptPasswordEncoder mengencrypt Password Raw menjadi String yang sudah di acak agar tidak mudah dilihat admin.
+
+### Pertanyaan 3
+Apakah penyimpanan password sebaiknya menggunakan encryption atau hashing? Mengapa demikian?
+- Hashing adalah fungsi satu arah (yah, pemetaan). Ini tidak dapat diubah, Anda menerapkan algoritma hash aman dan Anda tidak bisa mendapatkan kembali string asli.
+- Enkripsi adalah fungsi yang tepat (dua arah). Ini dapat dibalik, Anda dapat mendekripsi string yang rusak untuk mendapatkan string asli jika Anda memiliki kuncinya.
+- Dalam hal password lebih aman jika menggunakan hashing karena setelah di hashing, password tidak dapat dilihat kembali. Jika user lupa dengan password lama, mereka bisa mereplace password dengan yang baru.
+
+### Pertanyaan 4
+Jelaskan secara singkat apa itu UUID beserta penggunaannya!
+- Universally unique identifier (UUID) digunakan untuk mengidentifikasi secara unik beberapa objek atau entitas di Internet. Bergantung pada mekanisme spesifik yang digunakan, UUID dijamin berbeda atau, paling tidak, sangat mungkin berbeda dari UUID lain yang ada. UUID digunakan untuk meningkatkan keamanan data pengguna dikarenakan id pengguna akan digenerate secara unik dengan hashing sebanyak 32 karakter secara acak sehingga id pengguna aman dan tidak mudah untuk diretas.
+
+### Pertanyaan 5
+Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut padahal kita sudah memiliki class UserRoleServiceImpl.java?
+- UserDetailsService adalah interface inti dalam Spring Security. UserDetailsService digunakan untuk mengambil informasi otentikasi dan otorisasi pengguna. Ini memiliki metode baca-saja tunggal bernama loadUserByUsername() yang mencari pengguna berdasarkan nama pengguna.
+
 
 ---
 ## PERTANYAAN TUTORIAL 5

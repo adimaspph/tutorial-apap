@@ -7,6 +7,7 @@ import apap.tutorial.cineplux.service.BioskopService;
 import apap.tutorial.cineplux.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -82,7 +83,8 @@ public class BioskopController {
     @GetMapping("/bioskop/view")
     public String viewDetailBioskop(
             @RequestParam(value = "noBioskop") Long noBioskop,
-            Model model
+            Model model,
+            Authentication authentication
     ) {
         BioskopModel bioskop = bioskopService.getBioskopByNoBioskop(noBioskop);
         List<PenjagaModel> listPenjaga = bioskop.getListPenjaga();
