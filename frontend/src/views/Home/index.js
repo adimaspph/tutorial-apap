@@ -7,6 +7,9 @@ import { Fab } from "@material-ui/core";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ViewStreamIcon from '@mui/icons-material/ViewStream';
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import {IconButton}  from "@material-ui/core";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 
 export default class Home extends React.Component {
@@ -63,6 +66,14 @@ export default class Home extends React.Component {
         this.setState({ shopItems: tempShopItems });
     };
 
+    removeAll = (item, inCart) => {
+        const removeItems = [...this.state.cartItems];
+        const removeItem = { ...item };
+        const targetInd = removeItems.findIndex((it) => it.id === removeItem.id);
+
+        removeItems.splice(targetInd, 1)
+        removeItem.inCart = false;
+    };
 
 
     render() {
@@ -107,6 +118,9 @@ export default class Home extends React.Component {
                                     onItemClick={this.handleAddItemToCart}
                                     isShopList={true}
                                 > </List>
+                                <IconButton onItemClick={removeAll}>
+                                    {<DeleteIcon/>}
+                                </IconButton>
                             </div>
                         )}
                     </div>
