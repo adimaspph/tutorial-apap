@@ -5,6 +5,58 @@
 * Adimas Putra Pratama Hendrata - 1906305575 - C
 
 ---
+## PERTANYAAN TUTORIAL 7
+
+### Pertanyaan 1
+Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.
+- Nomor 1: Menghapus item pada My Cart ketika button delete di click atau dipencet. Kemudian pada list item tombol keranjang akan muncul kembali.
+    ![image](https://cdn.discordapp.com/attachments/751758743418437706/913083553472974868/unknown.png)
+
+- Nomor 2: Membuat account balance menjadi bekurang seteleh user memasukan item kedalam keranjang. Kemudian saat user mengeluarkan barang dari keranjang, maka balance akan bertambah kembali sesuai dengan harga barang tersebut.
+    Pada add item:
+    ![image](https://cdn.discordapp.com/attachments/751758743418437706/913084353502924820/unknown.png)
+    Pada remove item:
+    ![image](https://cdn.discordapp.com/attachments/751758743418437706/913084672974651392/unknown.png)
+
+- Nomor 3: Membuat alert (peringatan) jika item yang akan dimasukan melebihi balance yang dimiliki user, sehingga item tersebut tidak dapat di masukkan pada keranjang belanjaan.
+    ![image](https://cdn.discordapp.com/attachments/751758743418437706/913085097538879578/unknown.png)
+
+
+### Pertanyaan 2
+Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan props?
+- Props adalah variabel yang didefinisikan pada parent class dan diteruskan pada komponen lain (jadi penghubung dan bisa digunakan oleh komponen parentnya)
+- State adalah variabel yang terdapat pada komponen
+
+### Pertanyaan 3
+Menurut kamu, apakah sebaiknya kita menggunakan component (e.g. List, Item) dalam React? sebutkan alasannya.
+- Sebaiknya kita menggunakan component karena component dapat digunakan berkali-kali sehingga tidak terjadi redudansi code pada react. Dengan memakai component, kita juga bisa menuliskan apa saja isi dari componen tersebut. Sebagai contoh pada tutorial kali ini kita menggunakan component item berulang kali sehingga home/index.js menjadi sangat singkat karena tidak perlu code yang duplikat.
+
+### Pertanyaan 4
+Apa perbedaan class component dan functional component?
+#### Class Component
+- Komponen dan buat fungsi render yang mengembalikan elemen React
+- kelas ES6 reguler yang memperluas perpustakaan reaksi bentuk kelas komponen
+- Juga dikenal sebagai komponen “stateful” karena mengimplementasikan logika dan state.
+- Itu harus memiliki metode render() yang mengembalikan html
+- Ini memiliki Logika UI yang kompleks
+- Mengakses props menggunakan this.props
+
+#### Funtional Component
+- hanyalah fungsi JavaScript biasa yang menerima props sebagai argumen dan mengembalikan elemen React
+- fungsi javascript sederhana yang hanya mengembalikan UI html
+- disebut komponen "stateless" karena mereka hanya menerima data dan menampilkannya dalam beberapa bentuk yang terutama bertanggung jawab untuk merender UI.
+- menerima properti (alat peraga) dalam fungsi dan mengembalikan html (JSX)
+- memberikan solusi tanpa menggunakan status
+- Tidak ada metode render yang digunakan dalam komponen fungsional.
+- biasanya dapat didefinisikan menggunakan fungsi panah tetapi juga dapat dibuat dengan kata kunci fungsi reguler.
+
+### Pertanyaan 5
+Dalam react, apakah perbedaan component dan element?
+- React Element adalah objek sederhana yang menggambarkan simpul DOM dan atribut atau propertinya yang dapat Anda katakan. Ini adalah objek deskripsi yang tidak dapat diubah dan Anda tidak dapat menerapkan metode apa pun di atasnya.
+- React Component adalah fungsi atau kelas yang menerima input dan mengembalikan elemen React. Itu harus menyimpan referensi ke node DOM dan ke instance komponen anak.
+
+----
+
 ## PERTANYAAN TUTORIAL 6
 
 ### Pertanyaan 1
@@ -31,6 +83,7 @@ Jelaskan secara singkat apa itu UUID beserta penggunaannya!
 ### Pertanyaan 5
 Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut padahal kita sudah memiliki class UserRoleServiceImpl.java?
 - UserDetailsService adalah interface inti dalam Spring Security. UserDetailsService digunakan untuk mengambil informasi otentikasi dan otorisasi pengguna. Ini memiliki metode baca-saja tunggal bernama loadUserByUsername() yang mencari pengguna berdasarkan nama pengguna.
+
 
 ---
 ## PERTANYAAN TUTORIAL 5
