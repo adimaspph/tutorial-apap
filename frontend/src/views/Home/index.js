@@ -66,13 +66,19 @@ export default class Home extends React.Component {
         this.setState({ shopItems: tempShopItems });
     };
 
-    removeAll = (item, inCart) => {
-        const removeItems = [...this.state.cartItems];
-        const removeItem = { ...item };
-        const targetInd = removeItems.findIndex((it) => it.id === removeItem.id);
+    // function test(item) {
+    //     if (y === undefined) {
+    //         y = 2;
+    //     }
+    // };
 
-        removeItems.splice(targetInd, 1)
-        removeItem.inCart = false;
+    removeAll = () => {
+        const items = [...this.state.cartItems];
+
+        for (let i = 0; i < items.length; i++) {
+            // handleRemoveItemFromCart(items.indexOf(i));
+        }
+        console.log("delete");
     };
 
 
@@ -109,6 +115,9 @@ export default class Home extends React.Component {
                                     items={this.state.cartItems}
                                     onItemClick={this.handleRemoveItemFromCart}
                                 > </List>
+                                <button onClick={this.removeAll}>
+                                    Delete All
+                                </button>
                             </div>
                         ) : (
                             <div className="col-sm">
@@ -118,9 +127,6 @@ export default class Home extends React.Component {
                                     onItemClick={this.handleAddItemToCart}
                                     isShopList={true}
                                 > </List>
-                                <IconButton onItemClick={removeAll}>
-                                    {<DeleteIcon/>}
-                                </IconButton>
                             </div>
                         )}
                     </div>
