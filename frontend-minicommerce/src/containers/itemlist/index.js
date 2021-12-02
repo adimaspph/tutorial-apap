@@ -243,6 +243,7 @@ class ItemList extends Component {
     }
 
     componentDidMount() {
+        console.log("componentDidMount()");
         this.loadData();
         this.countCart();
     }
@@ -263,6 +264,7 @@ class ItemList extends Component {
     }
         
     render() {
+        console.log("render()");
         return (
             <div className={classes.itemList}>
                 <div style={{ position: "fixed", top: 25, right: 25 }}>
