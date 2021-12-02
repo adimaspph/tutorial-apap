@@ -190,30 +190,27 @@ class ItemList extends Component {
         // console.log(quantityOnCart);
 
         const jumlahBarang = this.state.addCart[item.id]
-        if (jumlahBarang == 0 || jumlahBarang == "" || jumlahBarang == undefined) {
+        if (jumlahBarang === 0 || jumlahBarang === "" || jumlahBarang === undefined) {
             alert("Masukan Jumlah Barang");
             return true
         }
-        if (item.quantity < (jumlahBarang + quantityOnCart)) {
+        const totalJumlah = (parseInt(jumlahBarang) + parseInt(quantityOnCart));
+        // console.log(totalJumlah);
+        if (item.quantity < totalJumlah) {
+            
             alert("Stok tidak memenuhi");
-            return true
+            return true;
         }
+
+        // return true;
         try {
-            console.log(jumlahBarang)
+            // console.log(jumlahBarang)
             const data = {
                 idItem : item.id,
-                quantity : (jumlahBarang + quantityOnCart)
+                quantity : jumlahBarang
             };
             await APIConfig.post("/cart", data);
             
-            // const updateData = {
-            //     title: item.title,
-            //     price: item.price,
-            //     description: item.description,
-            //     category: item.category,
-            //     quantity: (item.quantity - jumlahBarang),
-            // };
-            // await APIConfig.put(`/item/${item.id}`, updateData);
             this.setState({
                 id: "",
                 title: "",
@@ -222,6 +219,7 @@ class ItemList extends Component {
                 category: "",
                 quantity: 0
             })
+            alert("Berhasil Memasukan barang ke keranjang");
             this.countCart();
             this.loadData();
         } catch (error) {
@@ -237,7 +235,7 @@ class ItemList extends Component {
                 cartItems : data.result,
             });
             
-            console.log(this.state.cartItems)
+            // console.log(this.state.cartItems)
         } catch (error) {
             alert("Oops terjadi masalah pada server");
             console.log(error);

@@ -3,13 +3,27 @@ import Button from "../button";
 import classes from "./styles.module.css";
 
 const Item = (props) => {
-    const { id, title, price, description, category, quantity, handleInput, handleEdit, handleDelete, handleCart} = props;
+    const { id, title, price, description, category, quantity, isCart,handleInput, handleEdit, handleDelete, handleCart} = props;
 
     // let jumlah;
     // function handleInput(e) {
     //     // props.jumlah = (e.target.value);
     //     console.log(props.jumlah);
     // };
+    const totalHarga = price*quantity;
+    if (isCart===true) {
+        return (
+            <div className={classes.item}>
+                <h3>{`ID ${id}`}</h3>
+                <p>{`Nama Barang: ${title}`}</p>
+                <p>{`Harga: ${price}`}</p>
+                <p>{`Jumlah: ${quantity}`}</p>
+                <p>{`Deskripsi: ${description}`}</p>
+                <p>{`Kategori: ${category}`}</p>
+                <h3>{`Total Harga: ${totalHarga}`}</h3>
+            </div>
+        );
+    }
 
     return (
         <div className={classes.item}>

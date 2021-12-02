@@ -3,7 +3,6 @@ import Item from "../../components/Item";
 import classes from "./styles.module.css";
 import APIConfig from "../../api/APIConfig";
 import Button from "../../components/button";
-import Modal from "../../components/modal";
 
 import { Fab } from "@material-ui/core";
 import Badge from "@material-ui/core/Badge";
@@ -17,25 +16,44 @@ class Cart extends Component {
             cartItems: [],
             isCheckout: false,
             cartHidden: false,
-            id: "",
-            title: "",
-            price: 0,
-            description: "",
-            category: "",
-            quantity: 0,
-            totalHarga : this.price + this.quantity
         }
+        this.handleCheckout = this.handleCheckout.bind(this);
+    }
 
+    async handleCheckout() {
+        try{
+            const {data} = await APIConfig.get(`/cart/checkout`);
+            // console.log(data);
+            this.loadCart();
+            alert(data);
+        } catch(error) {
+            alert("Oops terjadi masalah pada server");
+            console.log(error);
+        }
+    }
+
+    async loadCart() {
+        try {
+            const { data } = await APIConfig.get("/cart");
+            this.setState({ 
+                cartItems : data.result,
+
+            });
+            
+            // console.log(this.state.cartItems)
+        } catch (error) {
+            alert("Oops terjadi masalah pada server");
+            console.log(error);
+        }
+    }   
+
+    componentDidMount() {
+        this.loadCart();
     }
 
     render() {
         return (
             <div className={classes.itemList}>
-                {/* <a href="itemlist">
-                    <Button action={this.handleAddItem}>
-                        {`< BACK`}
-                    </Button>
-                </a> */}
                 
                 <div style={{ position: "fixed", top: 25, right: 25 }}>
                     <a href="/itemlist">
@@ -52,14 +70,28 @@ class Cart extends Component {
                             )}
                         </Fab>
                     </a>
-                    
                 </div>
 
                 <h1 className={classes.title}>
                     Keranjang
                 </h1>
-
-
+                <Button action={this.handleCheckout}>
+                    Checkout
+                </Button>
+                <div>
+                    {this.state.cartItems.map((item) => (
+                        <Item
+                            key={item.item.id}
+                            id={item.item.id}
+                            title={item.item.title}
+                            price={item.item.price}
+                            description={item.item.description}
+                            category={item.item.category}
+                            quantity={item.quantity}
+                            isCart={true}
+                        />
+                    ))}
+                </div>
             </div>
         );
     }
