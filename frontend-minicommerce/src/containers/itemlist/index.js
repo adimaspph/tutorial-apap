@@ -235,7 +235,7 @@ class ItemList extends Component {
                 cartItems : data.result,
             });
             
-            // console.log(this.state.cartItems)
+            console.log(this.state.cartItems)
         } catch (error) {
             alert("Oops terjadi masalah pada server");
             console.log(error);

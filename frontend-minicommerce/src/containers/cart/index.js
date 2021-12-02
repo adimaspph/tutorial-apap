@@ -14,7 +14,6 @@ class Cart extends Component {
         super(props);
         this.state = {
             cartItems: [],
-            isCheckout: false,
             cartHidden: false,
         }
         this.handleCheckout = this.handleCheckout.bind(this);
@@ -39,7 +38,11 @@ class Cart extends Component {
                 cartItems : data.result,
 
             });
-            
+            // if (this.state.cartItems.length === 0) {
+            //     this.setState({ 
+            //         cartItems : data.result,
+            //     });
+            // }
             // console.log(this.state.cartItems)
         } catch (error) {
             alert("Oops terjadi masalah pada server");
@@ -75,9 +78,14 @@ class Cart extends Component {
                 <h1 className={classes.title}>
                     Keranjang
                 </h1>
+
+                {this.state.cartItems.length === 0 ?
+                <div> </div>:
                 <Button action={this.handleCheckout}>
                     Checkout
                 </Button>
+                }
+                
                 <div>
                     {this.state.cartItems.map((item) => (
                         <Item
