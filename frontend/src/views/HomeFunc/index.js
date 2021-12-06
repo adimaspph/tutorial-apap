@@ -54,6 +54,7 @@ function App() {
         const removeItem = { ...item };
         const targetInd = removeItems.findIndex((it) => it.id === removeItem.id);
 
+        console.log(item);
         removeItems.splice(targetInd, 1)
         removeItem.inCart = false;
 
@@ -61,6 +62,51 @@ function App() {
         updateShopItem(removeItem, false);
         setBalance(balance + removeItem.price);
     };
+
+    function removeUpper(item) {
+        const removeItems = [...cartItems];
+        const removeItem = { ...item };
+        
+        console.log(item);
+        
+        const targetInd = removeItems.findIndex((it) => it.id === removeItem.id);
+        
+        removeItems.splice(targetInd, 1)
+        removeItem.inCart = false;
+
+        setCartItems(removeItems);
+        updateShopItem(removeItem, false);
+        setBalance(balance + removeItem.price);
+    };
+
+    function removeAll() {
+        let items = [...cartItems];
+        // console.log(items);
+        // items.forEach(test);
+        for (let i = 0; i < items.length; i++) {
+            // handleRemoveItemFromCart(items.indexOf(i));
+            // items.forEach(handleRemoveItemFromCart);
+            // console.log(items[i]);
+            // removeUpper(items[i]);
+            let item = items[i];
+            // items.forEach(removeUpper);
+            // console.log("delete");
+            let removeItems = [...cartItems];
+            let removeItem = { ...item };
+            
+            console.log(item);
+            
+            let targetInd = removeItems.findIndex((it) => it.id === removeItem.id);
+            
+            removeItems.splice(targetInd, 1)
+            removeItem.inCart = false;
+
+            setCartItems(removeItems);
+            updateShopItem(removeItem, false);
+            setBalance(balance + removeItem.price);
+        }
+    };
+
     return (
         <div className="container-fluid">
             <h1 className="text-center mt-3 mb-0">Mini Commerce</h1>
@@ -87,6 +133,9 @@ function App() {
                                 items={cartItems}
                                 onItemClick={handleRemoveItemFromCart}
                             > </List>
+                            <button onClick={removeAll}>
+                                Delete All
+                            </button>
                         </div>
                     ) : <div className="col-sm">
                         <List

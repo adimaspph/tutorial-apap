@@ -1,7 +1,13 @@
 import React from "react";
 import Item from "../Item/index.js";
+import {IconButton}  from "@material-ui/core";
 
 export default function List({ title, items, onItemClick, isShopList }) {
+
+    // function delete(item) {
+    //     item = 
+    // }
+
     return (
         <>
             <h3 style={StyleSheet.heading}>{title}</h3>
@@ -13,7 +19,10 @@ export default function List({ title, items, onItemClick, isShopList }) {
                     </div>
                 ) : null}
                 {items.map((item) => (
-                    <Item key={item.id} item={item} onChange={onItemClick} isShopList={isShopList}/>
+                    <div>
+                        <Item key={item.id} item={item} onChange={onItemClick} isShopList={isShopList}/>
+                        {/* <button onClick={delete} item={item}>Delete</button> */}
+                    </div>
                 ))}
             </div>
         </>
