@@ -5,6 +5,41 @@
 * Adimas Putra Pratama Hendrata - 1906305575 - C
 
 ---
+## PERTANYAAN TUTORIAL 8
+
+### Pertanyaan 1
+Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian melakukan langkah - langkah tersebut?
+- Setelah menutup modal yang terbuka setiap handle yang menangani form seperti handleSubmit dan handleCancel, kita reset state yang dipakai pada form tersebut seperti id, tittle, price, dan lainnya.
+- this.setState({
+            id: "",
+            title: "",
+            price: 0,
+            description: "",
+            category: "",
+            quantity: 0
+        })
+
+### Pertanyaan 2
+Jelaskan fungsi dari async dan await!
+- async berfungsi agar fungsi tersebut berjalan asingkron artinya fungsi lain tidak perlu menunggu fungsi tersebut selesai agar bisa terjalan.
+- await berfungsi untuk menunda baris selanjutnya berjalan pada async. Dengan ini maka fungsi baris selanjutnya harus menunggu baris await selesai berjalan terlebih dahulu
+
+### Pertanyaan 3
+Masukkan jawaban dari Screenshot yang diperintahkan di halaman 9 pada Component Lifecycle pada pertanyaan ini.
+- ![image](https://cdn.discordapp.com/attachments/751758743418437706/915894951735341116/unknown.png)
+- ![image](https://cdn.discordapp.com/attachments/751758743418437706/915895421249929216/unknown.png)
+- ![image](https://cdn.discordapp.com/attachments/751758743418437706/915898035026944010/unknown.png)
+
+### Pertanyaan 4
+Jelaskan fungsi dari componentDidMount, shouldComponentUpdate, componentDidUpdate, componentWillReceiveProps, componentWillUnmount
+- componentDidMount = Fungsi ini akan di jalankan setelah fungsi render saat mounting selesai dijalankan. Fungsi ini berguna untuk meload item-item dari API
+- shouldComponentUpdate = Dipanggil setelah props atau state komponen berubah. Fungsi ini berguna untuk menentukan apakah komponen harus di render ulang atau tidak. Seringkali digunakan untuk mengoptimisasi performa. Contoh usecase adalah ketika mengklik tombol maka state akan berubah dan fungsi should component update akan dipanggil.
+- componentDidUpdate = Dipanggil sesudah komponen di render ulang. Fungsinya mirip dengan componentDidMount yakni untuk manipulasi DOM dan request data.
+- componentWillReceiveProps = Dipanggil sebelum state yang ada di komponen diupdate atau diganti dengan value yang baru. Fungsi ini berguna untuk mengganti value sebelum komponen menerima props yang value yang baru.
+- componentWillUnmount = Fungsi ini dipanggil sebelum sebuah komponen dihapus dari DOM. Fungsi ini berguna untuk menghapus dan membersihkan DOM dari komponen yang dihapus. Contohnya adalah menghapus timer yang telah didefinisikan saat componentDidMount.
+
+---
+
 ## PERTANYAAN TUTORIAL 7
 
 ### Pertanyaan 1
